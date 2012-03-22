@@ -4,7 +4,7 @@
  */
 
 $finnish = array(
-	'ratings:ratethis' => 'Arvioi:',
+	'ratings:ratethis' => 'Arvioi',
 );
 
 add_translation('fi', $finnish);

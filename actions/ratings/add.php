@@ -7,7 +7,7 @@ $entity_guid = (int) get_input('guid');
 $rating = (int) get_input('rating');
 
 //check to see if the user has already rated the item
-// @todo Should user be allowed to change the rating?
+// @todo Should user be allowed to change the vote?
 if (elgg_annotation_exists($entity_guid, 'rating')) {
 	system_message(elgg_echo("ratings:alreadyrated"));
 	forward(REFERER);
@@ -44,7 +44,8 @@ if ($entity->owner_guid != $user->guid) {
 	ratings_notify_user($entity->getOwnerEntity(), $user, $entity);
 }
 
-system_message(elgg_echo("ratings:ratings"));
+// @todo Is there a need to rate something that has name instead of title?
+system_message(elgg_echo("ratings:ratings", array($rating, $entity->title)));
 
 // Forward back to the page where the user rated the object
 forward(REFERER);
